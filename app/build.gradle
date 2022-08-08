@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.remote.input"
+        minSdk 19
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled true
+
+        //注册 https://www.jiguang.cn/
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.remote.input",
+                JPUSH_APPKEY : "jpush key",
+                JPUSH_CHANNEL: "self" //
+        ]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "org.greenrobot:eventbus:3.3.1"
+
+    implementation 'com.guolindev.permissionx:permissionx:1.6.4'
+
+    implementation("com.github.xxwgg:coil:2.1.0-min17-SNAPSHOT")
+    implementation("com.github.xxwgg:coil-gif:2.1.0-min17-SNAPSHOT")
+
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    //https://www.jiguang.cn/
+    implementation 'cn.jiguang.sdk:jcore:3.3.0'
+    implementation 'cn.jiguang.sdk:jpush:4.7.2'
+    implementation 'cn.jiguang.sdk:janalytics:2.1.4'
+
+    //retrofit 2.6.4 -> okhttp 3.12.x 支持android 4.4
+    def retrofit_version = "2.6.4"
+    //noinspection GradleDependency
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    //noinspection GradleDependency
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+//    api 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+//    https://code.cash.app/okhttp-3-13-requires-android-5
+    //noinspection GradleDependency
+    implementation("com.squareup.okhttp3:okhttp:3.12.13")
+
+    implementation "com.google.code.gson:gson:2.9.0"
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.annotation:annotation:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
+}

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">跨屏输入</string>
+    <string name="service_desc">用来查找界面上的输入框</string>
+</resources>

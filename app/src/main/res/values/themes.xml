@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="Theme.Remote_input_server" parent="@style/Theme.AppCompat">
+    </style>
+
+
+</resources>
